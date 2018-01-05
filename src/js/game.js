@@ -54,7 +54,8 @@ export default class {
   }
 
   gameStart () {
-    this.init()
+    // this.init()
+    this.endGame = false
     this.gameLoop()
   }
 
