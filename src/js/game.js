@@ -3,6 +3,7 @@
 import config from './config'
 import Board from './board'
 import Food from './food'
+import Snake from './snake'
 
 export default class {
   constructor () {
@@ -21,6 +22,9 @@ export default class {
     this.score = config.START_SCORE
     this.updateScore()
     this.food = new Food(this.board.getRandomCoord())
+    this.snake = new Snake()
+
+    console.log(this.snake.getSnake())
 
     document
       .querySelector('#start')
