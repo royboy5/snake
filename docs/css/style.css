@@ -2,6 +2,30 @@ body {
   font: 12px Roboto, sans-serif, Arial;
   padding: 2rem;
 }
+header {
+  display: flex;
+}
+label {
+  font-size: 2rem;
+  padding-right: 25px;
+}
+button {
+  background-color: #a9a9a9;
+  border: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+  transition: 0.25s;
+}
+button#start:hover {
+  background-color: #008000;
+}
+button#stop:hover {
+  background-color: #f00;
+}
 canvas {
   border: 1px solid #000;
 }
