@@ -19,7 +19,7 @@ export default class {
 
   newDirection (nextDirection) {
     if (this.isInvalidDirection(nextDirection)) {
-      // console.log('invalid')
+      console.log('invalid direction')
       return
     }
     this.direction = nextDirection

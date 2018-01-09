@@ -75,6 +75,11 @@ export default class {
   }
 
   isGameOver () {
+    if (this.board.wallCollision(this.snake.getHead())) {
+      document.querySelector('#start').disabled = false
+      document.querySelector(`#stop`).disabled = true
+      this.endGame = true
+    }
     return this.endGame
   }
 
@@ -86,12 +91,14 @@ export default class {
   handleClick (e) {
     if (e.target.id === 'start') {
       document.querySelector(`#${e.target.id}`).disabled = true
+      document.querySelector(`#stop`).disabled = false
       this.gameStart()
     }
 
     if (e.target.id === 'stop') {
       this.endGame = true
       document.querySelector('#start').disabled = false
+      document.querySelector(`#stop`).disabled = true
     }
   }
 

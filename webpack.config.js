@@ -2,7 +2,6 @@ const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // Require  html-webpack-plugin plugin
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const config = {
   context: path.join(__dirname, 'src'),
@@ -86,8 +85,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'views/index.pug')
     }),
-    new ExtractTextPlugin('./css/style.css'),
-    new DashboardPlugin()
+    new ExtractTextPlugin('./css/style.css')
   ],
   devServer: {
     contentBase: path.join(__dirname, 'public'),

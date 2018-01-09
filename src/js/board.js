@@ -40,6 +40,15 @@ export default class {
     })
   }
 
+  wallCollision (coord) {
+    return (
+      coord.x <= 0 ||
+      coord.y <= 0 ||
+      coord.x * this.square >= this.canvas.width ||
+      coord.y * this.square >= this.canvas.height
+    )
+  }
+
   getRandomCoord () {
     let maxX = (this.canvas.width - this.square) / this.square
     let maxY = (this.canvas.height - this.square) / this.square
