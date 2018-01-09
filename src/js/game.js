@@ -13,6 +13,14 @@ export default class {
       config.SQUARE_SIZE
     )
 
+    document
+      .querySelector('#start')
+      .addEventListener('click', this.handleClick.bind(this))
+
+    document
+      .querySelector('#stop')
+      .addEventListener('click', this.handleClick.bind(this))
+
     this.init()
   }
 
@@ -21,24 +29,18 @@ export default class {
     this.endGame = false
     this.score = config.START_SCORE
     this.updateScore()
-    this.food = new Food(this.board.getRandomCoord())
-    this.snake = new Snake()
-
-    console.log(this.snake.getSnake())
-
-    document
-      .querySelector('#start')
-      .addEventListener('click', this.handleClick.bind(this))
-
-    document
-      .querySelector('#stop')
-      .addEventListener('click', this.handleClick.bind(this))
+    this.food = new Food(this.board.getRandomCoord(), config.FOOD_COLOR)
+    this.snake = new Snake(config.SNAKE_COLOR)
+    console.log(this.snake)
   }
 
   gameLoop () {
     this.board.clear()
-    this.board.drawSquare(this.food.location)
-    this.food.location = this.board.getRandomCoord()
+    this.board.drawSquare(this.food.location, this.food.color)
+    this.board.drawSquares(this.snake.segments, this.snake.color)
+    // this.food.location = this.board.getRandomCoord()
+
+    this.snake.move()
 
     if (this.isGameOver()) {
       return
@@ -48,14 +50,12 @@ export default class {
 
     // Run in a loop
     setTimeout(function () {
-      console.log('in loop')
       requestAnimationFrame(self.gameLoop.bind(self))
     }, 1000 / config.FPS)
   }
 
   gameStart () {
-    // this.init()
-    this.endGame = false
+    this.init()
     this.gameLoop()
   }
 

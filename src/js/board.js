@@ -21,10 +21,10 @@ export default class {
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
   }
 
-  drawSquare (coordinate) {
+  drawSquare (coordinate, color) {
     let x = coordinate.x * this.square
     let y = coordinate.y * this.square
-    this.ctx.fillStyle = 'green'
+    this.ctx.fillStyle = color
     this.ctx.beginPath()
     this.ctx.moveTo(x - this.square / 2, y - this.square / 2)
     this.ctx.lineTo(x + this.square / 2, y - this.square / 2)
@@ -32,6 +32,12 @@ export default class {
     this.ctx.lineTo(x - this.square / 2, y + this.square / 2)
     this.ctx.closePath()
     this.ctx.fill()
+  }
+
+  drawSquares (coordinates, color) {
+    coordinates.forEach(coordinate => {
+      this.drawSquare(coordinate, color)
+    })
   }
 
   getRandomCoord () {
