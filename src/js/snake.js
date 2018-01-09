@@ -11,11 +11,11 @@ export default class {
     this.directionBeforeMove = Direction.RIGHT
     this.segments = this.createSnake(config.INIT_SNAKE_SIZE)
     this.growSnake = false
-    console.log(this.segments)
-    this.segments.pop()
-    console.log(this.segments)
-    this.segments.unshift(this.getNextLocation())
-    console.log(this.getHead())
+    // console.log(this.segments)
+    // this.segments.pop()
+    // console.log(this.segments)
+    // this.segments.unshift(this.getNextLocation())
+    // console.log(this.getHead())
   }
 
   getHead () {
@@ -31,7 +31,6 @@ export default class {
   }
 
   move () {
-    console.log(this.getHead())
     this.directionBeforeMove = this.direction
     if (this.growSnake) {
       this.growSnake = false
@@ -51,9 +50,12 @@ export default class {
   }
 
   getNextLocation () {
-    return new Coordinate(
-      this.getHead.x + this.direction.x,
-      this.getHead.y + this.direction.y
+    let newCoords = new Coordinate(
+      this.getHead().x + this.direction.x,
+      this.getHead().y + this.direction.y
     )
+
+    console.log('new coords:', newCoords)
+    return newCoords
   }
 }
