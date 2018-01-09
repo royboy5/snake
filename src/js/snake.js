@@ -71,4 +71,13 @@ export default class {
         this.directionBeforeMove == Direction.LEFT)
     )
   }
+
+  selfCollision () {
+    let head = this.getHead()
+    return (
+      this.segments.slice(1).filter(function (segment) {
+        return segment.equals(head)
+      }).length > 0
+    )
+  }
 }

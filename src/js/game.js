@@ -77,7 +77,10 @@ export default class {
   }
 
   isGameOver () {
-    if (this.board.wallCollision(this.snake.getHead())) {
+    if (
+      this.board.wallCollision(this.snake.getHead()) ||
+      this.snake.selfCollision()
+    ) {
       document.querySelector('#start').disabled = false
       document.querySelector(`#stop`).disabled = true
       this.endGame = true
