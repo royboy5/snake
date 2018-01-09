@@ -41,7 +41,6 @@ export default class {
     this.updateScore()
     this.food = new Food(this.board.getRandomCoord(), config.FOOD_COLOR)
     this.snake = new Snake(config.SNAKE_COLOR)
-    console.log(this.snake)
   }
 
   gameLoop () {
@@ -57,7 +56,7 @@ export default class {
     }
 
     if (this.snake.getHead().equals(this.food.location)) {
-      console.log('got fude')
+      // console.log('got fude')
       this.score++
       this.food.setLocation(this.board.getRandomCoord())
       this.snake.addSegment()
@@ -108,7 +107,7 @@ export default class {
   }
 
   handleKeyDown (e) {
-    console.log(e.keyCode)
+    // console.log(e.keyCode)
     let newDirection = this.keycodes[e.keyCode]
     this.snake.newDirection(newDirection)
   }

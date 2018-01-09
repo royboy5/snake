@@ -19,7 +19,7 @@ export default class {
 
   newDirection (nextDirection) {
     if (this.isInvalidDirection(nextDirection)) {
-      console.log('invalid direction')
+      // console.log('invalid direction')
       return
     }
     this.direction = nextDirection
@@ -62,13 +62,13 @@ export default class {
     return (
       newDirection === this.direction ||
       (newDirection === Direction.UP &&
-        this.directionBeforeMove == Direction.DOWN) ||
+        this.directionBeforeMove === Direction.DOWN) ||
       (newDirection === Direction.DOWN &&
-        this.directionBeforeMove == Direction.UP) ||
+        this.directionBeforeMove === Direction.UP) ||
       (newDirection === Direction.LEFT &&
-        this.directionBeforeMove == Direction.RIGHT) ||
+        this.directionBeforeMove === Direction.RIGHT) ||
       (newDirection === Direction.RIGHT &&
-        this.directionBeforeMove == Direction.LEFT)
+        this.directionBeforeMove === Direction.LEFT)
     )
   }
 
