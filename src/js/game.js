@@ -46,6 +46,7 @@ export default class {
 
   gameLoop () {
     this.board.clear()
+    this.updateScore()
     this.board.drawSquare(this.food.location, this.food.color)
     this.board.drawSquares(this.snake.segments, this.snake.color)
 
@@ -57,6 +58,7 @@ export default class {
 
     if (this.snake.getHead().equals(this.food.location)) {
       console.log('got fude')
+      this.score++
       this.food.setLocation(this.board.getRandomCoord())
       this.snake.addSegment()
     }
