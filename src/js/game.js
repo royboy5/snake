@@ -4,6 +4,7 @@ import config from './config'
 import Board from './board'
 import Food from './food'
 import Snake from './snake'
+import Direction from './direction'
 
 export default class {
   constructor () {
@@ -13,6 +14,13 @@ export default class {
       config.SQUARE_SIZE
     )
 
+    this.keycodes = {
+      38: Direction.UP,
+      37: Direction.LEFT,
+      40: Direction.DOWN,
+      39: Direction.RIGHT
+    }
+
     document
       .querySelector('#start')
       .addEventListener('click', this.handleClick.bind(this))
@@ -20,6 +28,8 @@ export default class {
     document
       .querySelector('#stop')
       .addEventListener('click', this.handleClick.bind(this))
+
+    window.addEventListener('keydown', this.handleKeyDown.bind(this))
 
     this.init()
   }
@@ -38,7 +48,6 @@ export default class {
     this.board.clear()
     this.board.drawSquare(this.food.location, this.food.color)
     this.board.drawSquares(this.snake.segments, this.snake.color)
-    // this.food.location = this.board.getRandomCoord()
 
     this.snake.move()
 
@@ -78,5 +87,11 @@ export default class {
       this.endGame = true
       document.querySelector('#start').disabled = false
     }
+  }
+
+  handleKeyDown (e) {
+    console.log(e.keyCode)
+    let newDirection = this.keycodes[e.keyCode]
+    this.snake.newDirection(newDirection)
   }
 }

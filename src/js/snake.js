@@ -11,11 +11,6 @@ export default class {
     this.directionBeforeMove = Direction.RIGHT
     this.segments = this.createSnake(config.INIT_SNAKE_SIZE)
     this.growSnake = false
-    // console.log(this.segments)
-    // this.segments.pop()
-    // console.log(this.segments)
-    // this.segments.unshift(this.getNextLocation())
-    // console.log(this.getHead())
   }
 
   getHead () {
