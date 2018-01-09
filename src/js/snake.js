@@ -18,6 +18,10 @@ export default class {
   }
 
   newDirection (nextDirection) {
+    if (this.isInvalidDirection(nextDirection)) {
+      // console.log('invalid')
+      return
+    }
     this.direction = nextDirection
   }
 
@@ -50,7 +54,21 @@ export default class {
       this.getHead().y + this.direction.y
     )
 
-    console.log('new coords:', newCoords)
+    // console.log('new coords:', newCoords)
     return newCoords
+  }
+
+  isInvalidDirection (newDirection) {
+    return (
+      newDirection === this.direction ||
+      (newDirection === Direction.UP &&
+        this.directionBeforeMove == Direction.DOWN) ||
+      (newDirection === Direction.DOWN &&
+        this.directionBeforeMove == Direction.UP) ||
+      (newDirection === Direction.LEFT &&
+        this.directionBeforeMove == Direction.RIGHT) ||
+      (newDirection === Direction.RIGHT &&
+        this.directionBeforeMove == Direction.LEFT)
+    )
   }
 }
