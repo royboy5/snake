@@ -25,7 +25,7 @@ export default class {
     this.direction = nextDirection
   }
 
-  growSnake () {
+  addSegment () {
     this.growSnake = true
   }
 

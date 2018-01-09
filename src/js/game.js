@@ -55,6 +55,12 @@ export default class {
       return
     }
 
+    if (this.snake.getHead().equals(this.food.location)) {
+      console.log('got fude')
+      this.food.setLocation(this.board.getRandomCoord())
+      this.snake.addSegment()
+    }
+
     let self = this
 
     // Run in a loop
